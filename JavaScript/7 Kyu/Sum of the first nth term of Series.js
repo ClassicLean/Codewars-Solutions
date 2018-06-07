@@ -21,12 +21,7 @@ NOTE: In PHP the function is called series_sum().
 */
 function SeriesSum(n)
 {
-  let sum = 1;
-  let temp = 4;
-  for(let counter = n; counter > 1; counter--){
-    sum += 1/temp;
-    temp += 3;
-  }
-  if(n == 0) sum = 0;
+  let sum = 0;
+  for(let counter = 0;counter <n;counter++) sum+= 1/(counter*3+1);
   return sum.toFixed(2).toString();
 }
