@@ -4,14 +4,15 @@ You live in the city of Cartesia where all roads are laid out in a perfect grid.
     Note: you will always receive a valid array containing a random assortment of direction letters ('n', 's', 'e', or 'w' only). It will never give you an empty array (that's not a walk, that's standing still!).
 */
 function isValidWalk(walk) {
-  let hor = 0;
-  let ver = 0;
+  let horizontal = 0;
+  let vertical = 0;
   for(let direction in walk){
-    if(walk[direction] == 'n') hor++;
-    else if(walk[direction] == 's') hor--;
-    else if(walk[direction] == 'w') ver++;
-    else ver--;
+    switch(walk[direction]){
+      case('n'): vertical++; break;
+      case('s'): vertical--; break;
+      case('w'): horizontal++; break;
+      case('e'): horizontal--; break;
+    }
   }
-  if(walk.length == 10 && hor == 0 && ver == 0) return true;
-  return false;
+  if(walk.length == 10 && horizontal == 0 && vertical == 0) return true;
 }

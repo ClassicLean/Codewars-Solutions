@@ -26,20 +26,6 @@ public class Kata
 {
     public static IEnumerable<string> OpenOrSenior(int[][] data)
     {
-      var result = new List<string>();
-
-      foreach (var subList in data)
-      {
-        bool age = false;
-        bool handi = false;
-        foreach (int item in subList)
-        {
-          if (subList[0] >= 55) age = true;
-          if (subList[1] > 7) handi = true;
-        }
-        if(age == true && handi == true) result.Add("Senior");
-        else result.Add("Open");
-      }
-      return result;
+        return data.Select(member => member[0] >= 55 && member[1] > 7 ? "Senior" : "Open").ToList();
     }
 }
