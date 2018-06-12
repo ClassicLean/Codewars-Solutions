@@ -16,16 +16,13 @@ Test.describe("perfect powers", function(){
   });
 });
 */
-//TODO optimize code for larger test cases
 let isPP = function(n){
-  let divisors = [];
-  for(let counter = 0;counter<=n;counter++){
-    if(n%counter==0) divisors.push(counter);
-  }
-  for(let counter = 1;counter<=divisors.length;counter++){
-    let pow = Math.round(getBaseLog(divisors[counter],n));
+  for(let counter = 1;counter<=n;counter++){
+    let divisor = 1;
+    if(n%counter==0) divisor = counter;
+    let pow = Math.round(getBaseLog(divisor,n));
     if(pow == 1) return null;
-    else if(n == Math.pow(divisors[counter],pow)) return [divisors[counter],pow];
+    else if(n == Math.pow(divisor,pow)) return [divisor,pow];
   }
   return null;
 };

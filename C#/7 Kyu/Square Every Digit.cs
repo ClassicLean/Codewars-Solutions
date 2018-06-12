@@ -5,18 +5,15 @@ For example, if we run 9119 through the function, 811181 will come out, because 
 Note: The function accepts an integer and returns an integer
 */
 using System;
-using System.Linq;
 
 public class Kata
 {
   public static int SquareDigits(int n)
   {
-    var nArray = n.ToString().ToCharArray().Select(digit => Math.Pow(digit - '0', 2));
-    var result = "";
-    foreach (var digit in nArray)
-    {
-        result += Convert.ToInt32(digit);
-
+    string result = "";
+    foreach(char digit in n.ToString()){
+      int square = int.Parse(digit.ToString());
+      result += square * square;
     }
     return int.Parse(result);
   }
