@@ -11,14 +11,14 @@ Please keep in mind that the test cases ensure that the number of people in the 
 
 The second value in the first integer array is 0, since the bus is empty in the first bus stop.
 */
+using System.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 public class Kata
 {
   public static int Number(List<int[]> peopleListInOut)
   {
-    return peopleListInOut.Select(pair => pair[0] - pair[1]).Sum();
+    return peopleListInOut.Sum(passenger => passenger[0] - passenger[1]);
   }
 }
