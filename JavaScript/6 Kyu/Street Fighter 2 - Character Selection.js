@@ -71,31 +71,12 @@ Result:
 */
 function streetFighterSelection(fighters, position, moves){
   let result = [];
-  let horizontal = 0;
-  let vertical = 0;
-  for(let move of moves){
-    switch(move){
-      case 'down':
-        vertical++;
-        if(vertical>1) vertical = 1;
-        result.push(fighters[vertical][horizontal]);
-        break;
-      case 'up':
-        vertical--;
-        if(vertical<0) vertical = 0;
-        result.push(fighters[vertical][horizontal]);
-        break;
-      case 'left':
-        horizontal--;
-        if(horizontal < 0) horizontal = 5;
-        result.push(fighters[vertical][horizontal]);
-        break;
-      case 'right':
-        horizontal++;
-        if(horizontal > 5) horizontal = 0;
-        result.push(fighters[vertical][horizontal]);
-        break;
-    }
-  }
+  moves.forEach(move =>{
+    if(move == 'up') position[0] = 0;
+    else if(move == 'down') position[0] = 1;
+    else if(move == 'left') position[1] = (position[1] == 0) ? 5 : position[1] - 1;
+    else if(move == 'right') position[1] = (position[1] == 5) ? 0 : position[1] + 1;
+    result.push(fighters[position[0]][position[1]]);
+  });
   return result;
 }
