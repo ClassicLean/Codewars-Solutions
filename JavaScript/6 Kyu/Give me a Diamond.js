@@ -18,26 +18,17 @@ JS Note
 JS students, like Python ones, must implement the diamond(n) method, and return null for invalid input.
 */
 function diamond(n){
-  let diamond = '';
-  if(n % 2 === 1)
-  {
-    for(let counter = 1; counter <= n-2; counter++){
-      if(counter % 2 == 1){
-        for(let innerCounter = n-counter; innerCounter > 0; innerCounter-=2) diamond+= ' ';
-        for(let innerCounter = 0; innerCounter < counter; innerCounter++) diamond+= '*';
-        diamond+= '\n';
-      }
-    }
-    for(let counter = 0; counter < n; counter ++) diamond+= '*';
-    diamond+= '\n';
-    for(let counter = n-2; counter > 0; counter--){
-      if(counter % 2 == 1){
-        for(let innerCounter = n-counter; innerCounter > 0; innerCounter-=2) diamond+= ' ';
-        for(let innerCounter = 0; innerCounter < counter; innerCounter++) diamond+= '*';
-        diamond+= '\n';
-      }
-    }
-    return diamond;
+  if(n % 2 == 0 || n < 1) return null;
+  let counter = 0;
+  let add;
+  let diamond = line(counter, n);
+  while((counter += 2) < n){
+    add = line(counter / 2, n - counter);
+    diamond = add + diamond + add;
   }
-  return null;
+  return diamond;
+}
+
+function line(spaces, stars){
+  return (" ").repeat(spaces) + ("*").repeat(stars) + "\n";
 }
