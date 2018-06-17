@@ -17,16 +17,8 @@ Test.describe("perfect powers", function(){
 });
 */
 let isPP = function(n){
-  for(let counter = 1;counter<=n;counter++){
-    let divisor = 1;
-    if(n%counter==0) divisor = counter;
-    let pow = Math.round(getBaseLog(divisor,n));
-    if(pow == 1) return null;
-    else if(n == Math.pow(divisor,pow)) return [divisor,pow];
-  }
+  for(let counter = 2; counter * counter <= n; ++counter)
+    for(let innerCounter = 2; Math.pow(counter, innerCounter) <= n; ++innerCounter)
+      if(Math.pow(counter, innerCounter) == n) return [counter, innerCounter];
   return null;
 };
-
-function getBaseLog(base,number){
-  return Math.log(number)/Math.log(base);
-}
