@@ -29,8 +29,8 @@ function demovingShift(arr, shift) {
   let sArray = arr.join('').split('');
   let letters = /^[A-Za-z]+$/;
   for(let char in sArray){
-    let smallChar = 122 - sArray[char].charCodeAt(0);
-    let bigChar = 90 - sArray[char].charCodeAt(0);
+    let smallChar = 96 - sArray[char].charCodeAt(0);
+    let bigChar = 64 - sArray[char].charCodeAt(0);
     while(shift > 26) shift -= 26;
     if(!sArray[char].match(letters)){
       shift++;
@@ -39,13 +39,12 @@ function demovingShift(arr, shift) {
     if(sArray[char].charCodeAt(0) - shift < 65 &&
       sArray[char].charCodeAt(0) <= 90 &&
       sArray[char].charCodeAt(0) > 64){
-      sArray[char] = String.fromCharCode(Math.abs(bigChar + shift) - 64);
+      sArray[char] = String.fromCharCode(Math.abs(90 - bigChar - shift));
     }
     else if(sArray[char].charCodeAt(0) - shift < 97 &&
       sArray[char].charCodeAt(0) <= 122 &&
       sArray[char].charCodeAt(0) > 96){
-      //alert(sArray[char] + ': ' + shift + ': ' + String.fromCharCode(Math.abs(shift - 96) + smallChar));
-      sArray[char] = String.fromCharCode(Math.abs(122 - shift + 1));
+      sArray[char] = String.fromCharCode(Math.abs(122 - smallChar - shift));
       }
     else sArray[char] = String.fromCharCode(sArray[char].charCodeAt(0) - shift);
     shift++;
@@ -63,6 +62,6 @@ function arraySplit(word){
     word.slice(0,div).forEach(() => word.shift());
     wordLen -= div;
   }
-  for(let counter = result.length; counter < 5; counter++) result.push(0);
+  for(let counter = result.length; counter < 5; counter++) result.push("");
   return result;
 }
