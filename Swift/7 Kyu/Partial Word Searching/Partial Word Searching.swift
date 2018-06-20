@@ -1,3 +1,4 @@
+//TODO fix. Works on other online compilers but not on codewars
 import Foundation
 
 func wordSearch(_ str:String, _ arr:[String]) -> [String] {
