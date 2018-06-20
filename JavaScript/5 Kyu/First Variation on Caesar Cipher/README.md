@@ -1,4 +1,3 @@
-/*
 The action of a Caesar cipher is to replace each plaintext letter with a different one a fixed number of places up or down the alphabet.
 
 This program performs a variation of the Caesar shift. The shift increases by 1 for each character (on each iteration).
@@ -39,35 +38,3 @@ and demovingShift(v, 1) returns u.
 #Ref:
 
 Caesar Cipher : http://en.wikipedia.org/wiki/Caesar_cipher
-*/
-function movingShift(s, shift) {
-//TODO divide into 5 parts
-  let sArray = s.split('');
-  let letters = /^[A-Za-z]+$/;
-  for(let char in sArray){
-    let smallChar = 122 - sArray[char].charCodeAt(0);
-    let bigChar = 90 - sArray[char].charCodeAt(0);
-    while(shift > 26) shift -= 26;
-    if(!sArray[char].match(letters)){
-      shift++;
-      continue;
-    }
-    if(sArray[char].charCodeAt(0) + shift > 90 &&
-      sArray[char].charCodeAt(0) <= 90 &&
-      sArray[char].charCodeAt(0) > 64){
-      sArray[char] = String.fromCharCode(Math.abs(bigChar - shift) + 64);
-    }
-    else if(sArray[char].charCodeAt(0) + shift > 122 &&
-      sArray[char].charCodeAt(0) <= 122 &&
-      sArray[char].charCodeAt(0) > 96){
-      sArray[char] = String.fromCharCode(Math.abs(smallChar - shift) + 96);
-      }
-    else sArray[char] = String.fromCharCode(sArray[char].charCodeAt(0) + shift);
-    shift++;
-  }
-  return sArray.join('');
-}
-
-function demovingShift(arr, shift) {
-  return "";
-}
