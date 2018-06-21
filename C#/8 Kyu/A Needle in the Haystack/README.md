@@ -1,4 +1,3 @@
-/*
 Can you find the needle in the haystack?
 
 Write a function findNeedle() that takes an array full of junk but containing one "needle"
@@ -22,12 +21,3 @@ findNeedle(new Object[] {"hay", "junk", "hay", "hay", "moreJunk", "needle", "ran
 should return
 
 "found the needle at position 5"
-*/
-using System;
-public class Kata
-{
-  public static string FindNeedle(object[] haystack)
-  {
-    return "found the needle at position " + Array.IndexOf(haystack,"needle");
-  }
-}
