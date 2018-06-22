@@ -1,4 +1,3 @@
-/*
 Create a class Ball.
 
 Ball objects should accept one argument for "ball type" when instantiated.
@@ -10,10 +9,3 @@ ball2 = new Ball("super");
 
 ball1.ballType     //=> "regular"
 ball2.ballType     //=> "super"
-*/
-class Ball {
-    var type: String = "regular"
-    init(type: String = "regular") {
-        self.type = type
-    }
-}
