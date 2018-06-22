@@ -1,4 +1,3 @@
-/*
 This kata is to practice simple string output. Jamie is a programmer, and James' girlfriend. She likes diamonds, and wants a diamond string from James. Since James doesn't know how to make this happen, he needs your help.
 
 ###Task:
@@ -16,19 +15,3 @@ Since print is a reserved word in Python, Python students must implement the dia
 JS Note
 
 JS students, like Python ones, must implement the diamond(n) method, and return null for invalid input.
-*/
-function diamond(n){
-  if(n % 2 == 0 || n < 1) return null;
-  let counter = 0;
-  let add;
-  let diamond = line(counter, n);
-  while((counter += 2) < n){
-    add = line(counter / 2, n - counter);
-    diamond = add + diamond + add;
-  }
-  return diamond;
-}
-
-function line(spaces, stars){
-  return (" ").repeat(spaces) + ("*").repeat(stars) + "\n";
-}
