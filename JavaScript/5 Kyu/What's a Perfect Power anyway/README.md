@@ -1,4 +1,3 @@
-/*
 A perfect power is a classification of positive integers:
 
     In mathematics, a perfect power is a positive integer that can be expressed as an integer power of another positive integer. More formally, n is a perfect power if there exist natural numbers m > 1, and k > 1 such that mk = n.
@@ -15,10 +14,3 @@ Test.describe("perfect powers", function(){
     Test.assertEquals( isPP(5), null, "5 isn't a perfect number");
   });
 });
-*/
-let isPP = function(n){
-  for(let counter = 2; counter * counter <= n; ++counter)
-    for(let innerCounter = 2; Math.pow(counter, innerCounter) <= n; ++innerCounter)
-      if(Math.pow(counter, innerCounter) == n) return [counter, innerCounter];
-  return null;
-};
