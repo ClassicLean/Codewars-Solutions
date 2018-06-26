@@ -1,8 +1,3 @@
 func stringy(_ size: Int) -> String {
-  var result: String = ""
-  for counter in 1...size{
-    if counter & 1 == 1 { result += "1" }
-    else { result += "0" }
-  }
-  return result
+  return (0..<size).map{ $0 & 1 == 1 ? "0" : "1" }.joined()
 }
