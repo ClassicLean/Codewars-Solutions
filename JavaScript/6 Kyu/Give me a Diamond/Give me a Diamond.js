@@ -1,15 +1,15 @@
 function diamond(n){
-  if(n % 2 == 0 || n < 1) return null;
-  let counter = 0;
+  if(!(n & 1) || n < 1) return null;
   let add;
-  let diamond = line(counter, n);
+  let counter = 0;
+  let diam = line(counter, n);
   while((counter += 2) < n){
     add = line(counter / 2, n - counter);
-    diamond = add + diamond + add;
+    diam = add + diam + add;
   }
-  return diamond;
+  return diam;
 }
 
-function line(spaces, stars){
-  return (" ").repeat(spaces) + ("*").repeat(stars) + "\n";
+function line(spaces,stars){
+  return " ".repeat(spaces) + "*".repeat(stars) + "\n";
 }
