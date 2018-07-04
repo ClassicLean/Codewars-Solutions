@@ -1,4 +1,3 @@
-/*
 Short Intro
 
 Some of you might remember spending afternoons playing Street Fighter 2 in some Arcade back in the 90s or emulating it nowadays with the numerous emulators for retro consoles.
@@ -68,15 +67,3 @@ moves = ['right', 'down', 'left', 'left', 'left', 'left', 'right']
 Result:
 
 ['E.Honda', 'Chun Li', 'Ken', 'M.Bison', 'Sagat', 'Dhalsim', 'Sagat']
-*/
-function streetFighterSelection(fighters, position, moves){
-  let result = [];
-  moves.forEach(move =>{
-    if(move == 'up') position[0] = 0;
-    else if(move == 'down') position[0] = 1;
-    else if(move == 'left') position[1] = (position[1] == 0) ? 5 : position[1] - 1;
-    else if(move == 'right') position[1] = (position[1] == 5) ? 0 : position[1] + 1;
-    result.push(fighters[position[0]][position[1]]);
-  });
-  return result;
-}
