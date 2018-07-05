@@ -1,6 +1,2 @@
 def positive_sum(arr):
-    result = 0;
-    for number in arr:
-        if(number > 0):
-            result += number
-    return result   
+    return sum(digit for digit in arr if digit > 0)
