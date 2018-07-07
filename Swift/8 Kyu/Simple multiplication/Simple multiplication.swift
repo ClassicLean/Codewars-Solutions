@@ -1,3 +1,3 @@
 func simpleMultiplication(_ num: Int) -> Int {
-  return num & 1 == 1 ? num * 9 : num * 8;
+  return num * (num & 1 == 1 ? 9 : 8)
 }
