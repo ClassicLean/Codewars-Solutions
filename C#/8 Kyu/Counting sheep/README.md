@@ -2,12 +2,14 @@ Consider an array of sheep where some sheep may be missing from their place. We 
 
 For example,
 
+```
 [true,  true,  true,  false,
   true,  true,  true,  true ,
   true,  false, true,  false,
   true,  false, false, true ,
   true,  true,  true,  true ,
   false, false, true,  true]
+```
 
 The correct answer would be 17.
 
