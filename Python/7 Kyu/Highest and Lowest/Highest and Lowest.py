@@ -1,3 +1,3 @@
 def high_and_low(numbers):
-    newNums = list(map(lambda number: int(number), numbers.split()))
-    return str(max(newNums)) + " " + str(min(newNums))
+    newNums = [int(number) for number in numbers.split(' ')]
+    return '%i %i' % (max(newNums), min(newNums))
