@@ -1,6 +1,3 @@
 func triangular(_ n: Int) -> Int{
-  var result = 0
-  if n < 1 { return 0 }
-  for counter in 1...n { result += counter }
-  return result
+  return n > 0 ? (1...n).reduce(0, +) : 0
 }
