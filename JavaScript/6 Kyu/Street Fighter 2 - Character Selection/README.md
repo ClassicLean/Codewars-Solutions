@@ -4,21 +4,24 @@ Some of you might remember spending afternoons playing Street Fighter 2 in some 
 
 Can you solve this kata? Suuure-You-Can!
 
-UPDATE: a new kata's harder version is available here.
-
 The Kata
 
-You'll have to simulate the video game's character selection screen behaviour, more specifically the selection grid. Such screen looks like this: https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.fightersgeneration.com%2Fnp5%2Fgm%2Fsf2ce-s2.jpg&f=1
+You'll have to simulate the video game's character selection screen behaviour, more specifically the selection grid. Such screen looks like this:
+
+https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.fightersgeneration.com%2Fnp5%2Fgm%2Fsf2ce-s2.jpg&f=1
+
 Selection Grid Layout in text:
 
+```
 | Ryu  | E.Honda | Blanka  | Guile   | Balrog | Vega    |
 | Ken  | Chun Li | Zangief | Dhalsim | Sagat  | M.Bison |
+```
 
 Input
 
     the list of game characters in a 2x6 grid;
-    the initial position of the selection cursor (top-left is (0,0));
-    a list of moves of the selection cursor (which are up, down, left, right);
+    the initial position of the selection cursor (top-left is `(0,0)`);
+    a list of moves of the selection cursor (which are `up`, `down`, `left`, `right`);
 
 Output
 
@@ -42,28 +45,32 @@ Examples
 
 1.
 
+```
 fighters = [
     ["Ryu", "E.Honda", "Blanka", "Guile", "Balrog", "Vega"],
     ["Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat", "M.Bison"]
 ]
 initial_position = (0,0)
 moves = ['up', 'left', 'right', 'left', 'left']
+```
 
 then I should get:
 
-['Ryu', 'Vega', 'Ryu', 'Vega', 'Balrog']
+`['Ryu', 'Vega', 'Ryu', 'Vega', 'Balrog']`
 
 as the characters I've been hovering with the selection cursor during my moves. Notice: Ryu is the first just because it "fails" the first up See test cases for more examples.
 
 2.
 
+```
 fighters = [
     ["Ryu", "E.Honda", "Blanka", "Guile", "Balrog", "Vega"],
     ["Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat", "M.Bison"]
 ]
 initial_position = (0,0)
 moves = ['right', 'down', 'left', 'left', 'left', 'left', 'right']
+```
 
 Result:
 
-['E.Honda', 'Chun Li', 'Ken', 'M.Bison', 'Sagat', 'Dhalsim', 'Sagat']
+`['E.Honda', 'Chun Li', 'Ken', 'M.Bison', 'Sagat', 'Dhalsim', 'Sagat']`
