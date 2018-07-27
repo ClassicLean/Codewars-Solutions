@@ -1,8 +1,3 @@
 func findDeletedNumber(_ array: [Int], _ mixArray: [Int]) -> Int {
-    for counter in (0..<array.count) {
-        if array[counter] != mixArray.sorted()[counter] {
-            return array[counter]
-        }
-    }
-    return 0
+    return array.first(where: { !mixArray.contains($0) }) ?? 0
 }
