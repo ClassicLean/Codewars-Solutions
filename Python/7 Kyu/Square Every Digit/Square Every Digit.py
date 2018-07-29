@@ -1,2 +1,5 @@
 def square_digits(num):
-    return int(''.join(str(int(digit) * int(digit)) for digit in list(str(num))))
+    result = ""
+    for digit in str(num):
+        result += str(int(digit) ** 2)
+    return int(result)
