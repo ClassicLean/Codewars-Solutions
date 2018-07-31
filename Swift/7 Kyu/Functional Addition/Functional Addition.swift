@@ -1,4 +1,3 @@
 func add(_ n: Int) -> ((Int) -> Int) {
-  return { (number: Int) -> Int in
-    return n + number }
+  return { $0 + n }
 }
