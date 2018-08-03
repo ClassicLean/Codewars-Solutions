@@ -1,6 +1,7 @@
-class Ball{
-  var type = "regular"
-  init(type: String? = nil){
-    self.type = type ?? self.type
+class Ball {
+  let type: String
+
+  init(type: String = "regular") {
+    self.type = type
   }
 }
