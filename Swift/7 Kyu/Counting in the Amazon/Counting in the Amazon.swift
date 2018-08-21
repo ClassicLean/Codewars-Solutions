@@ -1,12 +1,5 @@
 func countArare(_ n: Int) -> String {
-  let one = "anane"
-  if n == 1 {
-    return one
-  }
-  else if n & 1 != 1 {
-    return (0..<(n / 2)).map{ _ in "adak" }.joined(separator: " ")
-  }
-  else {
-    return (0..<((n - 1) / 2)).map{ _ in "adak" }.joined(separator: " ")  + " " + one
-  }
+  var pairs = Array(repeating: "adak", count: n / 2)
+  if n & 1 == 1 { pairs.append("anane") }
+  return pairs.joined(separator: " ")
 }
