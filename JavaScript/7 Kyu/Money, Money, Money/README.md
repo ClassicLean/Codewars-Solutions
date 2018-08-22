@@ -6,6 +6,7 @@ Note that the principal is not taxed but only the year's accrued interest
 
 Example:
 
+```
   Let P be the Principal = 1000.00
   Let I be the Interest Rate = 0.05
   Let T be the Tax Rate = 0.18
@@ -18,6 +19,7 @@ After 2nd Year -->
   P = 1083.86
 After 3rd Year -->
   P = 1128.30
+```
 
 Thus Mr. Scrooge has to wait for 3 years for the initial pricipal to ammount to the desired sum.
 
