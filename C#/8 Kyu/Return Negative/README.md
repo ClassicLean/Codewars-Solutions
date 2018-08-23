@@ -2,9 +2,11 @@ In this simple assignment you are given a number and have to make it negative. B
 
 Example:
 
+```
 Kata.MakeNegative(1); // return -1
 Kata.MakeNegative(-5); // return -5
 Kata.MakeNegative(0); // return 0
+```
 
 Notes:
 
