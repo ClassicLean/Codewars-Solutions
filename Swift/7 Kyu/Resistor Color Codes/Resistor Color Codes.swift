@@ -1,5 +1,3 @@
-#TODO fix this error - passing value of type 'String' to an inout parameter requires explicit '&'
-
 import Foundation
 
 precedencegroup PowerPrecedence { higherThan: MultiplicationPrecedence }
@@ -24,26 +22,31 @@ func decodeResistorColors(_ bands: String) -> String {
 
     let resistors = bands.components(separatedBy: " ")
     var decoded = resistors.flatMap{ resistorColors[$0] }
-    var decodedResult = Int(decoded[0] + decoded[1])! * (10 ^^ Int(decoded[2])!)
+    var decodedResult = Float(Int(decoded[0] + decoded[1])! * (10 ^^ Int(decoded[2])!))
     var finalResult = ""
 
     if decodedResult >= 1000 && decodedResult < 1000000 {
         decodedResult /= 1000
-        finalResult += "\(String(decodedResult))k ohms,"
+        if Int(decoded[2])! > 2 || (Int(decoded[2])! < 3 && decoded[1] == "0") { finalResult += "\(String(Int(decodedResult)))k ohms," }
+        else { finalResult += "\(String(decodedResult))k ohms," }
     }
     else if decodedResult >= 1000000 {
+        print(Float(decodedResult / 1000000))
+        print(decoded)
         decodedResult /= 1000000
-        finalResult += "\(String(decodedResult))M ohms,"
+        if Int(decoded[2])! > 5 || (Int(decoded[2])! < 6 && decoded[1] == "0") { finalResult += "\(String(Int(decodedResult)))M ohms," }
+        else { finalResult += "\(String(decodedResult))M ohms," }
     }
-    else { finalResult = "\(String(decodedResult)) ohms," }
+    else { finalResult = "\(String(Int(decodedResult))) ohms," }
 
-    guard decoded.indices.contains(4) else { return finalResult += " 20%" }
+    guard resistors.indices.contains(3)
+        else {
+            finalResult += " 20%"
+            return finalResult
+        }
 
-    if decoded[4] == "gold" { finalResult += " 5%" }
-    else if decoded[4] == "silver" { finalResult += " 10%" }
+    if resistors[3] == "gold" { finalResult += " 5%" }
+    else if resistors[3] == "silver" { finalResult += " 10%" }
 
     return finalResult
 }
-
-let test = "yellow violet black gold"
-print(decodeResistorColors(test))
