@@ -1,3 +1,3 @@
 function descendingOrder(n){
-  return +(''+n).split('').sort((a,b)=> b-a).join('');
+  return +(String(n).split('').sort().reverse().join(''));
 }
