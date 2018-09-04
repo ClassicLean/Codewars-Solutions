@@ -1,52 +1,11 @@
-import Foundation
-
-precedencegroup PowerPrecedence { higherThan: MultiplicationPrecedence }
-infix operator ^^ : PowerPrecedence
-func ^^ (radix: Int, power: Int) -> Int {
-    return Int(pow(Double(radix), Double(power)))
-}
-
 func decodeResistorColors(_ bands: String) -> String {
-    let resistorColors: [String : String] = [
-    "black": "0",
-    "brown": "1",
-    "red": "2",
-    "orange": "3",
-    "yellow": "4",
-    "green": "5",
-    "blue": "6",
-    "violet": "7",
-    "gray": "8",
-    "white": "9"
-    ]
-
-    let resistors = bands.components(separatedBy: " ")
-    var decoded = resistors.flatMap{ resistorColors[$0] }
-    var decodedResult = Float(Int(decoded[0] + decoded[1])! * (10 ^^ Int(decoded[2])!))
-    var finalResult = ""
-
-    if decodedResult >= 1000 && decodedResult < 1000000 {
-        decodedResult /= 1000
-        if Int(decoded[2])! > 2 || (Int(decoded[2])! < 3 && decoded[1] == "0") { finalResult += "\(String(Int(decodedResult)))k ohms," }
-        else { finalResult += "\(String(decodedResult))k ohms," }
-    }
-    else if decodedResult >= 1000000 {
-        print(Float(decodedResult / 1000000))
-        print(decoded)
-        decodedResult /= 1000000
-        if Int(decoded[2])! > 5 || (Int(decoded[2])! < 6 && decoded[1] == "0") { finalResult += "\(String(Int(decodedResult)))M ohms," }
-        else { finalResult += "\(String(decodedResult))M ohms," }
-    }
-    else { finalResult = "\(String(Int(decodedResult))) ohms," }
-
-    guard resistors.indices.contains(3)
-        else {
-            finalResult += " 20%"
-            return finalResult
-        }
-
-    if resistors[3] == "gold" { finalResult += " 5%" }
-    else if resistors[3] == "silver" { finalResult += " 10%" }
-
-    return finalResult
+  let colors = ["black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "gray", "white"]
+  let tolerances = ["gold": 5, "silver": 10]
+  let names = bands.components(separatedBy: " ")
+  let digits = names.flatMap(colors.index)
+  let ohms = Double((digits[0] * 10 + digits[1]) * Array(repeating: 10, count: digits[2]).reduce(1, *))
+  let tolerance = (names.count == 4 ? tolerances[names[3]] : nil) ?? 20
+  let (divisor, suffix) = ohms > 999999 ? (1_000_000, "M") : ohms > 999 ? (1_000, "k") : (1, "")
+  let ohmsRounded = String(format: "%.1f", ohms / Double(divisor)).replacingOccurrences(of: ".0", with: "")
+  return "\(ohmsRounded)\(suffix) ohms, \(tolerance)%"
 }
